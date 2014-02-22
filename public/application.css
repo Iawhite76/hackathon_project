@@ -7,3 +7,12 @@
   width: 200px;
   border: 10px solid black;
 }
+
+.row.header {
+  text-align: center;
+}
+.row.header h3 {
+  text-align: center;
+  color: green;
+}
+
