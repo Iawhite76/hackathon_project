@@ -1,4 +1,5 @@
-$('form input').addClass("default-value")
+$('form input[type != "submit"]').addClass("default-value")
+
 $('.default-value').each(function() {
     var default_value = this.value;
     $(this).focus(function() {
