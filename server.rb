@@ -31,9 +31,13 @@ post '/inventory' do
   @price3 = params[:price3]
   @pic3 = params[:pic3]
   @items = [@item, @item2, @item3]
+
   @serial_numbers = [@serial_number, @serial_number2, @serial_number3]
+
   @prices = [@price, @price2, @price3]
+
   @pics = [@pic, @pic2, @pic3]
+
   erb :inventory
 end
 
