@@ -7,3 +7,8 @@
   background-color: blue;
   border: 10px solid black;
 }
+
+input, label {
+  text-align: center;
+}
+
