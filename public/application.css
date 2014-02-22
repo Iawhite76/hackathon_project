@@ -1,3 +1,9 @@
 .header {
   text-align: center;
 }
+
+#pic_display {
+  background-size: 200px 200px;
+  background-color: blue;
+  border: 10px solid black;
+}
