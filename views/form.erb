@@ -19,13 +19,23 @@
   <dd>
     <a href="#panel2">Item</a>
     <div id="panel2" class="content">
-       <form method="post" action="/inventory">
+       <form method="post" action="/form" enctype="multipart/form-data">
         <input type="text" value="Item 1 name" id="item" name="item"></input><br>
         <input type="text" value="Serial number" id="serial_number" name="serial_number"></input><br>
         <input type="text" value="Retail price" id="price" name="price"></input><br>
-        <input type="text" value="Upload picture" id="pic" name="pic"></input><br>
+        <input type="file" value="Upload picture" id='pic' name="pic"></input><br>
         <input type="submit" value="Submit" id="submit"></input>
       </form>
+    </div>
+  </dd>
+  </dd>
+    <dd>
+    <a href="#panel3">Saved Item</a>
+    <div id="panel3" class="content">
+      <% if @id %>
+      <%= @id %>
+      <% end %>
+
     </div>
   </dd>
   </dd>
