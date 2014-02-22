@@ -2,7 +2,7 @@ require 'rubygems'
 require 'sinatra'
 require 'pry'
 require 'flickraw'
-
+require_relative 'lib/base58.rb'
 #set :bind, '0.0.0.0' # Vagrant fix
 
 FlickRaw.api_key = ENV['API_KEY']
@@ -47,6 +47,7 @@ end
 
 get '/inventory' do
 #temporary just to show rendered inventory page
+
   @user_photos = flickr.photos.search :user_id => '118312704@N05', :tags => 'zalary'
   puts @user_photos
   erb :inventory
@@ -76,6 +77,12 @@ post '/inventory' do
   @prices = [@price, @price2, @price3]
   @pics = [@pic, @pic2, @pic3]
   @id = flickr.upload_photo PHOTO_PATH, :title => @item, :description => 'serial number: ' + @serial_number + 'retail price: ' + @price, :tags => @hidden_name
+  puts @id
+  @photo_detail = flickr.photos.getInfo :photo_id => @id
+  @pid = @photo_detail.id
+  @secret = @photo_detail.secret
+  @ps = @photo_detail.server
+  @farm = @photo_detail.farm
   erb :inventory
 end
 
