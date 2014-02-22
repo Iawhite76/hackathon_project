@@ -5,13 +5,45 @@
   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/foundation/5.1.1/css/foundation.min.css">
   <link rel="stylesheet" href="/js/application.css" type="text/css" />
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+  <style>
+      #map_canvas {
+        width: 300px;
+        height: 200px;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script>
+      function initialize() {
+        var map_canvas = document.getElementById('map_canvas');
+        var map_options = {
+          center: new google.maps.LatLng(44.5403, -78.5463),
+          zoom: 8,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(map_canvas, map_options)
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
+
 </head>
-<body></a>
+<body>
 
   <div class="row header">
 
       <h1>Summary of Inventory for User Name</h1>
       <h3>Total Value: </h3>
+  </div>
+
+  <div class="row map">
+    <div class="large-6 columns">
+      Insurance Agents Near You:
+    </div>
+    <div class="large-6 columns">
+      <div id="map_canvas"></div>
+    </div>
+
   </div>
 
 
