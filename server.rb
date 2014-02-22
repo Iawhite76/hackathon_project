@@ -44,6 +44,11 @@ post '/form' do
   erb :form
 end
 
+get '/inventory' do
+#temporary just to show rendered inventory page
+  erb :inventory
+end
+
 # post '/inventory' do
 #   @name = params[:name]
 #   @user_name = params[:user_name]

@@ -7,19 +7,27 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 </head>
 <body></a>
-  <h1>Summary of Inventory for <%= @user_name %></h1>
+
   <div class="row">
-    <p>Name: <%= @name %></p>
-    <p>Phone: <%= @phone %></p>
-    <p>Email: <%= @email %></p>
-    <p>Zip: <%= @zip %></p>
-    <% @sum = 0.0 %>
-    <p>Total Value: $<% @prices.each do |x| %>
-                      <% @sum += x.to_f %>
-                      <% end %>
-                      <%= @sum.round(2) %>
-                        </p>
+      <h1>Summary of Inventory for <%= @user_name %></h1>
   </div>
+
+  <div class="row">
+        <div class="large-6 columns">
+          <p>Name: <%= @name %></p>
+          <p>Phone: <%= @phone %></p>
+          <p>Email: <%= @email %></p>
+          <p>Zip: <%= @zip %></p>
+          <% @sum = 0.0 %>
+          <div class="large-6 columns">
+          <p>Total Value: $<% @prices.each do |x| %>
+                            <% @sum += x.to_f %>
+                            <% end %>
+                            <%= @sum.round(2) %>
+                              </p>
+        </div>
+  </div>
+
   <div class="items">
 <% i = 0 %>
   <% while i < @items.length %>
