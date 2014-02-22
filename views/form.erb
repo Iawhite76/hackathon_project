@@ -1,4 +1,11 @@
-
+<html>
+<head>
+  <meta charset="UTF-8" />
+        <title>Insure My Stuff</title>
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/foundation/5.1.1/css/foundation.min.css">
+        <link rel="stylesheet" href="/application.css" type="text/css" />
+</head>
+  <body>
     <h1 class="header">Insure My Stuff</h1>
     <p class="header">Upload your belongings</p>
 
@@ -38,18 +45,18 @@
       </form>
     </div>
   </dd>
-  </dd>
     <dd>
     <a href="#panel3">Saved Items (click to view)</a>
     <div id="panel3" class="content">
       <% if @id %>
       <%= @id %>
+      <%= @photo_detail %>
       <% end %>
 
-    </div>
-  </dd>
-  </dd>
+ </dd>
 </dl>
+</body>
+</html>
 
 
 

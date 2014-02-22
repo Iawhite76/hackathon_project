@@ -3,12 +3,16 @@
 }
 
 #pic_display {
-  background-size: 200px 200px;
-  background-color: blue;
+  height: 200px;
+  width: 200px;
   border: 10px solid black;
 }
 
-input {
+.row.header {
   text-align: center;
+}
+.row.header h3 {
+  text-align: center;
+  color: green;
 }
 

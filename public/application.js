@@ -14,4 +14,7 @@ $('.default-value').each(function() {
     });
 });
 
-$('.user-info')
+$('#remove').on('click', function (e) {
+    e.preventDefault();
+    $('.row.item').remove();
+});

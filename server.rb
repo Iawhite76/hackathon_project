@@ -13,6 +13,9 @@ flickr.access_secret = ENV['A_SECRET']
 enable :sessions
 
 get '/form' do
+  if @id
+  @photo_detail = flickr.photos.getInfo :photo_id => @id
+  end
   erb :form
 end
 
@@ -21,8 +24,30 @@ post '/form' do
   @serial_number = params[:serial_number]
   @item = params[:item]
   @price = params[:price]
-  @id = flickr.upload_photo PHOTO_PATH, :title => @item, :description => 'serial number: ' + @serial_number + 'retail price: ' + @price
+  @pic = params[:pic]
+  @hidden_name = params[:hidden_name]
+  @item2 = params[:item2]
+  @serial_number2 = params[:serial_number2]
+  @price2 = params[:price2]
+  @pic2 = params[:pic2]
+  @item3 = params[:item3]
+  @serial_number3 = params[:serial_number3]
+  @price3 = params[:price3]
+  @pic3 = params[:pic3]
+  @items = [@item, @item2, @item3]
+
+  @serial_numbers = [@serial_number, @serial_number2, @serial_number3]
+
+  @prices = [@price, @price2, @price3]
+
+  @pics = [@pic, @pic2, @pic3]
+  @id = flickr.upload_photo PHOTO_PATH, :title => @item, :description => 'serial number: ' + @serial_number + 'retail price: ' + @price, :tags => @hidden_name
   erb :form
+end
+
+get '/inventory' do
+#temporary just to show rendered inventory page
+  erb :inventory
 end
 
 # post '/inventory' do
@@ -50,3 +75,11 @@ end
 #   erb :inventory
 # end
 
+
+
+get '/detail' do
+  @id = '12702679144'
+  @photo_detail = flickr.photos.getInfo :photo_id => @id
+  @photo_detail.title
+  @photo_detail.description
+end
