@@ -1,0 +1,5 @@
+equire 'rubygems'
+require 'rspec'
+require 'vcr'
+require_relative '../lib/insure_my_stuff.rb'
+require_relative 'support/vcr_setup.rb'
