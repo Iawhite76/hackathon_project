@@ -13,3 +13,5 @@ $('.default-value').each(function() {
         }
     });
 });
+
+$('.user-info')
