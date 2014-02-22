@@ -4,7 +4,7 @@
 
     <dl class="accordion" data-accordion>
   <dd>
-    <a href="#panel1">User Information</a>
+    <a href="#panel1">User Information (click to enter)</a>
     <div id="panel1" class="content active">
       <form data-abide method="post" action="/inventory">
         <div class="name-field">
@@ -20,25 +20,27 @@
         </div>
         <br>
         <input type="text" value="Zip code" id="zip" name="zip"></input><br>
-        <a href="#panel2"><button class="next">Next</button></a> <!-- submits form. should send you to next panel -->
       </form>
     </div>
   </dd>
   <dd>
-    <a href="#panel2">Item</a>
+    <a href="#panel2">Item Information (click to enter)</a>
     <div id="panel2" class="content">
        <form method="post" action="/form" enctype="multipart/form-data">
-        <input type="text" value="Item 1 name" id="item" name="item"></input><br>
+        <input type="text" value="Item name" id="item" name="item"></input><br>
         <input type="text" value="Serial number" id="serial_number" name="serial_number"></input><br>
-        <input type="text" value="Retail price" id="price" name="price"></input><br>
+        <input type="text" value="Approximate Value" id="price" name="price"></input><br>
+        <input type="text" value="Item Description" id="description" name="description"></input><br>
+      <div class="medium-6 small-6 large-8 columns large-centered small-centered medium-centered">
         <input type="file" value="Upload picture" id='pic' name="pic"></input><br>
         <input type="submit" value="Submit" id="submit"></input>
+      </div>
       </form>
     </div>
   </dd>
   </dd>
     <dd>
-    <a href="#panel3">Saved Item</a>
+    <a href="#panel3">Saved Items (click to view)</a>
     <div id="panel3" class="content">
       <% if @id %>
       <%= @id %>
