@@ -1,0 +1,26 @@
+
+  <h1>Summary of Inventory for <%= @user_name %></h1>
+  <div class="row">
+    <p>Name: <%= @name %></p>
+    <p>Phone: <%= @phone %></p>
+    <p>Email: <%= @email %></p>
+    <p>Zip: <%= @zip %></p>
+  </div>
+<% i = 0 %>
+  <% while i < @items.length %>
+  <div class="row">
+    <div class="large-6 columns">
+      <p>Item Name: <%= @items[i] %></p>
+      <p>Serial Number: <%= @serial_numbers[i] %></p>
+      <p>Retail Price: <%= @prices[i] %></p>
+    </div>
+    <div class="large-6 columns">
+      <div id="pic_display">
+        <img src="<%=@pics[i] %>" />
+    </div>
+    </div>
+  </div>
+    <%= i += 1 %>
+  <% end %>
+
+

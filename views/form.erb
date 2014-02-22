@@ -1,0 +1,48 @@
+
+    <h1 class="header">Insure My Stuff</h1>
+    <p class="header">Upload your belongings</p>
+
+    <dl class="accordion" data-accordion>
+  <dd>
+    <a href="#panel1">User Information</a>
+    <div id="panel1" class="content active">
+      <form method="post" action="/inventory">
+        <input type="text" value="Name" id="name" name="name"></input><br>
+        <input type="text" value="User name" id="user_name" name="user_name"></input><br>
+        <input type="text" value="Phone number" id="phone" name="phone"></input><br>
+        <input type="email" value="Email address" id="email" name="email"></input><br>
+        <input type="text" value="Zip code" id="zip" name="zip"></input><br>
+        <a href="#panel2"><button class="next">Next</button></a> <!-- submits form. should send you to next panel -->
+      </form>
+    </div>
+  </dd>
+  <dd>
+    <a href="#panel2">Item</a>
+    <div id="panel2" class="content">
+       <form method="post" action="/form" enctype="multipart/form-data">
+        <input type="text" value="Item 1 name" id="item" name="item"></input><br>
+        <input type="text" value="Serial number" id="serial_number" name="serial_number"></input><br>
+        <input type="text" value="Retail price" id="price" name="price"></input><br>
+        <input type="file" value="Upload picture" id='pic' name="pic"></input><br>
+        <input type="submit" value="Submit" id="submit"></input>
+      </form>
+    </div>
+  </dd>
+  </dd>
+    <dd>
+    <a href="#panel3">Saved Item</a>
+    <div id="panel3" class="content">
+      <% if @id %>
+      <%= @id %>
+      <% end %>
+
+    </div>
+  </dd>
+  </dd>
+</dl>
+
+
+
+
+
+
