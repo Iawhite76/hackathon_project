@@ -10,7 +10,7 @@ flickr.access_token = ENV['TOKEN']
 flickr.access_secret = ENV['A_SECRET']
 enable :sessions
 
-PHOTO_PATH='photo.jpg'
+
 
 #set :bind, '0.0.0.0' # Vagrant fix
 
@@ -20,9 +20,19 @@ puts "You are now authenticated as #{login.username}"
 end
 
 get '/post' do
-flickr.upload_photo PHOTO_PATH, :title => 'Title', :description => 'This is the description'
+  erb :photo
 end
 
+post '/post' do
+  puts params
+  PHOTO_PATH=params[:photo][:tempfile]
+  flickr.upload_photo PHOTO_PATH, :title => 'Title', :description => 'This is the description'
+
+end
+
+get '/list' do
+
+end
 
 
 get '/authenticate' do
