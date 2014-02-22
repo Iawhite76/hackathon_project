@@ -4,8 +4,8 @@ require 'pry'
 
 set :bind, '0.0.0.0' # Vagrant fix
 
-get '/welcome' do
-  erb :welcome
+get '/form' do
+  erb :form
 end
 
 get '/form' do
