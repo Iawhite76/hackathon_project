@@ -10,7 +10,7 @@
 
   <div class="row header">
 
-      <h1>Summary of Inventory for</h1>
+      <h1>Summary of Inventory</h1>
       <h3>Total Value: </h3>
   </div>
 
@@ -21,10 +21,11 @@
       <p>Serial Number: <%= @serial_number %></p>
       <p>Retail Price: <%=@price %></p>
       <input type="button" value="Remove Item" class="remove"></input>
+      <input type="button" value="Submit Item" class="submit" id="submit_item"></input>
     </div>
     <div class="large-6 columns">
       <div id="pic_display">
-        <img src="http://www.flickr.com/photos/118312704@N05/<%=@id%>" />
+        <img src="http://www.flickr.com/photos/118312704@N05/<%=@id%>/" />
       </div>
     </div>
   </div>
@@ -35,28 +36,44 @@
   </div>
 
   <script type="text/javascript">
-// $('.remove').on('click', function (e) {
-//     e.preventDefault();
-//     $('.row.item').remove();
-// });
-
-// $('#add').on('click', function (e) {
-//   e.preventDefault();
-//   $('.items')
-//     .append('<div class="row item">' +
-//             '<div class="large-6 columns">' +
-//                 '<p>Item Name: <input type="text" name="item"></input></p>' +
-//                 '<p>Serial Number: <input type="text" name="serial_number"></input></p>' +
-//                 '<p>Retail Price: <input type="text" name="price"></input></p>' +
-//                 'Upload photo: <input type="text" name="pic"></input>'+
-//                   '<input type="button" value="Remove Item" id="remove"></input>'+
-//                   '</div>'+
-//                   '<div class="large-6 columns">'+
-//                   '<img src="" />'+
-//                   '</div>'+
-//                   '</div>');
-
-// })
+$('.remove').on('click', function (e) {
+    e.preventDefault();
+    $('.row.item').remove();
+});
+var $item_div = '<div class="row item">' +
+            '<div class="large-6 columns">' +
+                '<p>Item Name: <input type="text" name="item"></input></p>' +
+                '<p>Serial Number: <input type="text" name="serial_number"></input></p>' +
+                '<p>Retail Price: <input type="text" name="price"></input></p>' +
+                'Upload photo: <input type="text" name="pic"></input>'+
+                  '</div>'+
+                  '<div class="large-6 columns">'+
+                  '<img src="" />'+
+                  '</div>'+
+                  '</div>';
+var $item_result = '<div class="row item">' +
+            '<div class="large-6 columns">' +
+                '<p>Item Name: <input type="text" name="item"></input></p>' +
+                '<p>Serial Number: <input type="text" name="serial_number"></input></p>' +
+                '<p>Retail Price: <input type="text" name="price"></input></p>' +
+                'Upload photo: <input type="text" name="pic"></input>'+
+                  '<input type="button" value="Remove Item" id="remove"></input>'+
+                  '<input type="button" value="Submit Item" class="submit" id="submit_item"></input>'+
+                  '</div>'+
+                  '<div class="large-6 columns">'+
+                  '<img src="" />'+
+                  '</div>'+
+                  '</div>';
+$('#add').on('click', function (e) {
+  e.preventDefault();
+  $('.items')
+    .append(''+$item_div+'');
+});
+$('#submit_item').on('click', function (e)  {
+  $('.items')
+    .remove(''+$item_div+'')
+    .append('Test');
+});
   </script>
 
 
