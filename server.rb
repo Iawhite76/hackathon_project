@@ -12,8 +12,16 @@ get '/form' do
   erb :form
 end
 
-post '/form' do
+post '/inventory' do
   @name = params[:name]
+  @user_name = params[:user_name]
+  @phone = params[:phone]
+  @email = params[:email]
+  @zip = params[:zip]
+  @item = params[:item]
+  @serial_number = params[:serial_number]
+  @price = params[:price]
+  puts params
   erb :inventory
 end
 
