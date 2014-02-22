@@ -8,19 +8,24 @@
         <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
         <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 </head>
-  <body>
+  <div class="row">
+    <div class="small-11 medium-10 large-10 columns small-centered medium-centered large-centered">
+      <body>
+        <div class="row">
+            <div class="small-12 medium-10 large-10 columns small-centered medium-centered large-centered">
+        <%= yield %>
 
-    <%= yield %>
-
- </footer>
-        <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.0.3/jquery-2.0.3.js"></script>
-        <script type="text/javascript" src="/application.js"></script>
-        <script src="/js/vendor/jquery.js"></script>
-        <script src="/js/vendor/fastclick.js"></script>
-        <script src="/js/foundation.min.js"></script>
-        <script>
-          $(document).foundation();
-        </script>
-        <%# possibly add in foundation js here - not necessary %>
+         </footer>
+          <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.0.3/jquery-2.0.3.js"></script>
+          <script type="text/javascript" src="/application.js"></script>
+          <script src="/js/vendor/jquery.js"></script>
+          <script src="/js/vendor/fastclick.js"></script>
+          <script src="/js/foundation.min.js"></script>
+          <script>
+            $(document).foundation();
+          </script>
+          <%# possibly add in foundation js here - not necessary %>
+          </div>
+      </div>
     </body>
 </html>

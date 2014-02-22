@@ -15,6 +15,7 @@
 .row.header {
   text-align: center;
 }
+
 .row.header h3 {
   text-align: center;
   color: green;
@@ -25,3 +26,6 @@
   margin-bottom: 10px;
 }
 
+input {
+  text-align: center;
+}
