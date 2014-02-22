@@ -8,11 +8,20 @@
   border: 10px solid black;
 }
 
+.row {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 .row.header {
   text-align: center;
 }
 .row.header h3 {
   text-align: center;
   color: green;
+}
+
+#pic_display {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
