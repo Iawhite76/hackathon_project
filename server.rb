@@ -13,6 +13,9 @@ flickr.access_secret = ENV['A_SECRET']
 enable :sessions
 
 get '/form' do
+  if @id
+  @photo_detail = flickr.photos.getInfo photo_id=@id
+ end
   erb :form
 end
 
