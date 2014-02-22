@@ -11,8 +11,12 @@
 .row.header {
   text-align: center;
 }
+
 .row.header h3 {
   text-align: center;
   color: green;
 }
 
+input {
+  text-align: center;
+}
