@@ -47,6 +47,8 @@ end
 
 get '/inventory' do
 #temporary just to show rendered inventory page
+  @user_photos = flickr.photos.search :user_id => '118312704@N05', :tags => 'zalary'
+  puts @user_photos
   erb :inventory
 end
 
