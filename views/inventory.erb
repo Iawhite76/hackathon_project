@@ -1,18 +1,34 @@
-
+<html>
+<head>
+  <title>Summary of Inventory</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/foundation/5.1.1/css/foundation.min.css">
+  <link rel="stylesheet" href="/application.css" type="text/css" />
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+</head>
+<body></a>
   <h1>Summary of Inventory for <%= @user_name %></h1>
   <div class="row">
     <p>Name: <%= @name %></p>
     <p>Phone: <%= @phone %></p>
     <p>Email: <%= @email %></p>
     <p>Zip: <%= @zip %></p>
+    <% @sum = 0.0 %>
+    <p>Total Value: $<% @prices.each do |x| %>
+                      <% @sum += x.to_f %>
+                      <% end %>
+                      <%= @sum.round(2) %>
+                        </p>
   </div>
+  <div class="items">
 <% i = 0 %>
   <% while i < @items.length %>
-  <div class="row">
+  <div class="row item">
     <div class="large-6 columns">
       <p>Item Name: <%= @items[i] %></p>
       <p>Serial Number: <%= @serial_numbers[i] %></p>
-      <p>Retail Price: <%= @prices[i] %></p>
+      <p>Retail Price: $<%= @prices[i] %></p>
+      <input type="button" value="Remove Item" class="remove"></input>
     </div>
     <div class="large-6 columns">
       <div id="pic_display">
@@ -22,5 +38,36 @@
   </div>
     <%= i += 1 %>
   <% end %>
+</div>
+  <div>
+    <input type="button" value="Add New Item" id="add"></input>
+  </div>
+
+  <script type="text/javascript">
+$('.remove').on('click', function (e) {
+    e.preventDefault();
+    $('.row.item').remove();
+});
+
+$('#add').on('click', function (e) {
+  e.preventDefault();
+  $('.items')
+    .append('<div class="row item">' +
+            '<div class="large-6 columns">' +
+                '<p>Item Name: <input type="text" name="item"></input></p>' +
+                '<p>Serial Number: <input type="text" name="serial_number"></input></p>' +
+                '<p>Retail Price: <input type="text" name="price"></input></p>' +
+                'Upload photo: <input type="text" name="pic"></input>'+
+                  '<input type="button" value="Remove Item" id="remove"></input>'+
+                  '</div>'+
+                  '<div class="large-6 columns">'+
+                  '<img src="" />'+
+                  '</div>'+
+                  '</div>');
+
+})
+  </script>
 
 
+</body>
+</html>
