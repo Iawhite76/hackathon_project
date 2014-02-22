@@ -40,7 +40,7 @@ post '/form' do
   @prices = [@price, @price2, @price3]
 
   @pics = [@pic, @pic2, @pic3]
-
+  @id = flickr.upload_photo PHOTO_PATH, :title => @item, :description => 'serial number: ' + @serial_number + 'retail price: ' + @price
   erb :form
 end
 
