@@ -13,3 +13,8 @@ $('.default-value').each(function() {
         }
     });
 });
+
+$('#remove').on('click', function (e) {
+    e.preventDefault();
+    $('.row.item').remove();
+});
