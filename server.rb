@@ -14,8 +14,8 @@ enable :sessions
 
 get '/form' do
   if @id
-  @photo_detail = flickr.photos.getInfo photo_id=@id
- end
+  @photo_detail = flickr.photos.getInfo :photo_id => @id
+  end
   erb :form
 end
 
@@ -25,6 +25,7 @@ post '/form' do
   @item = params[:item]
   @price = params[:price]
   @pic = params[:pic]
+  @hidden_name = params[:hidden_name]
   @item2 = params[:item2]
   @serial_number2 = params[:serial_number2]
   @price2 = params[:price2]
@@ -40,7 +41,7 @@ post '/form' do
   @prices = [@price, @price2, @price3]
 
   @pics = [@pic, @pic2, @pic3]
-  @id = flickr.upload_photo PHOTO_PATH, :title => @item, :description => 'serial number: ' + @serial_number + 'retail price: ' + @price
+  @id = flickr.upload_photo PHOTO_PATH, :title => @item, :description => 'serial number: ' + @serial_number + 'retail price: ' + @price, :tags => @hidden_name
   erb :form
 end
 
@@ -69,3 +70,11 @@ end
 #   erb :inventory
 # end
 
+
+
+get '/detail' do
+  @id = '12702679144'
+  @photo_detail = flickr.photos.getInfo :photo_id => @id
+  @photo_detail.title
+  @photo_detail.description
+end
