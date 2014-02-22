@@ -4,7 +4,7 @@
 
     <dl class="accordion" data-accordion>
   <dd>
-    <a href="#panel1">Accordion 1</a>
+    <a href="#panel1">User Information</a>
     <div id="panel1" class="content active">
       <form method="post" action="/inventory">
         <input type="text" value="Name" id="name" name="name"></input><br>
@@ -12,11 +12,12 @@
         <input type="text" value="Phone number" id="phone" name="phone"></input><br>
         <input type="email" value="Email address" id="email" name="email"></input><br>
         <input type="text" value="Zip code" id="zip" name="zip"></input><br>
+        <a href="#panel2"><button class="next">Next</button></a> <!-- submits form. should send you to next panel -->
       </form>
     </div>
   </dd>
   <dd>
-    <a href="#panel2">Accordion 2</a>
+    <a href="#panel2">Item</a>
     <div id="panel2" class="content">
        <form method="post" action="/inventory">
         <input type="text" value="Item 1 name" id="item" name="item"></input><br>
@@ -30,34 +31,7 @@
   </dd>
 </dl>
 
-<!-- <form method="post" action="/inventory">
-    <input type="text" value="Name" id="name" name="name"></input><br>
-    <input type="text" value="User name" id="user_name" name="user_name"></input><br>
-    <input type="text" value="Phone number" id="phone" name="phone"></input><br>
-    <input type="email" value="Email address" id="email" name="email"></input><br>
-    <input type="text" value="Zip code" id="zip" name="zip"></input><br>
-  <div class="row">
-    <div class="large-4 columns">
-      <input type="text" value="Item 1 name" id="item" name="item"></input><br>
-      <input type="text" value="Serial number" id="serial_number" name="serial_number"></input><br>
-      <input type="text" value="Retail price" id="price" name="price"></input><br>
-      <input type="text" value="Upload picture" id="pic" name="pic"></input><br>
-    </div>
-    <div class="large-4 columns">
-      <input type="text" value="Item 2 name" id="item" name="item2"></input><br>
-      <input type="text" value="Serial number" id="serial_number" name="serial_number2"></input><br>
-      <input type="text" value="Retail price" id="price" name="price2"></input><br>
-      <input type="text" value="Upload picture" id="pic" name="pic2"></input><br>
-    </div>
-    <div class="large-4 columns">
-      <input type="text" value="Item 3 name" id="item" name="item3"></input><br>
-      <input type="text" value="Serial number" id="serial_number" name="serial_number3"></input><br>
-      <input type="text" value="Retail price" id="price" name="price3"></input><br>
-      <input type="text" value="Upload picture" id="pic" name="pic3"></input><br>
-    </div>
-  </div>
-    <input type="submit" value="Submit" id="submit"></input>
-</form> -->
+
 
 
 
