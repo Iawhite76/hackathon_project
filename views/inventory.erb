@@ -28,7 +28,7 @@
       <p>Item Name: <%= @items[i] %></p>
       <p>Serial Number: <%= @serial_numbers[i] %></p>
       <p>Retail Price: $<%= @prices[i] %></p>
-      <input type="button" value="Remove Item" id="remove"></input>
+      <input type="button" value="Remove Item" class="remove"></input>
     </div>
     <div class="large-6 columns">
       <div id="pic_display">
@@ -44,7 +44,7 @@
   </div>
 
   <script type="text/javascript">
-$('#remove').on('click', function (e) {
+$('.remove').on('click', function (e) {
     e.preventDefault();
     $('.row.item').remove();
 });
@@ -52,21 +52,8 @@ $('#remove').on('click', function (e) {
 $('#add').on('click', function (e) {
   e.preventDefault();
   $('.items')
-    .append('<p>Test</p>');
-    .append('<div class="row item">
-              <div class="large-6 columns">
-                <p>Item Name: </p>
-                <p>Serial Number:</p>
-                <p>Retail Price:</p>
-                <input type="button" value="Remove Item" id="remove"></input>
-              </div>
-              <div class="large-6 columns">
-                <div id="pic_display">
-                  <img src="http://http://cdn2.holytaco.com/wp-content/uploads/images/2010/monkey-smoking3.jpg" />
-                </div>
-              </div>
-            </div>')
-    ;
+    .append('<div class="row item"><div class="large-6 columns"><p>Item Name: </p><p>Serial Number: </p><p>Retail Price: </p><input type="button" value="Remove Item" id="remove"></input></div><div class="large-6 columns"><div id="pic_display"><img src="" /></div></div></div>');
+
 })
   </script>
 
