@@ -41,7 +41,7 @@ post '/form' do
 
   @pics = [@pic, @pic2, @pic3]
 
-  erb :inventory
+  erb :form
 end
 
 # post '/inventory' do
