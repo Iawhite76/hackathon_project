@@ -23,7 +23,7 @@
 
 </div>
   <div class="row add_div">
-    <div class="large-6 columns">
+    <div class="medium-6 columns">
       <p>Item Name:<input type="text" name="item" id="item_name"></input></p>
       <p>Serial Number: <input type="text" name="serial_number" id="serial"></input></p>
       <p>Retail Price: <input type="text" name="price" id="price2"></input></p>
@@ -37,6 +37,7 @@
 $('.remove').on('click', function (e) {
     e.preventDefault();
     $('.row.item:last').remove();
+    $('.row.item:last img').remove();
 });
 
 
@@ -51,14 +52,15 @@ $('.add').on('click', function (e) {
 });
 
 var $item_result = '<div class="row item">' +
-            '<div class="large-9 columns" class="item_text">' +
+                  '<div class="medium-9 columns" class="item_text">' +
                 '<p>Item Name:' + '<label id="post_name"></label>' + '</p>' +
                 '<p>Serial Number:' + '<label id="post_number"></label>' + '</p>' +
                 '<p>Retail Price:'+ '<label id="post_price"></label>' + '</p>' +
                   '</div>'+
-                  '<div class="large-3 columns" id="post_pic">'+
+                  '<div class="medium-3 columns" id="post_pic">'+
                   '</div>'+
-                  '</div>';
+                  '</div>'
+                  ;
 
   </script>
 

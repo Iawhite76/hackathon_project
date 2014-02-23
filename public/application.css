@@ -10,12 +10,6 @@
   margin-bottom: 10px;
 }
 
-#post_pic {
-  height: 200px;
-  width: 200px;
-  border: 10px solid black;
-}
-
 .row {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -34,16 +28,25 @@
 
 #post_pic {
   height: 200px;
-  width: 200px;
+  width: 25%;
   border: 10px solid black;
   margin-top: 10px;
   margin-bottom: 10px;
   float: left;
 }
-
-#post_pic {
+#post_pic img {
+  height: 200px;
+  width: 200px;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.row {
+  min-height: 400px;
+}
+
+.item_text {
+  width: 60%;
   float: left;
 }
 
