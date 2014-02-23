@@ -6,6 +6,8 @@
   height: 200px;
   width: 200px;
   border: 10px solid black;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .row {
@@ -21,7 +23,10 @@
   color: green;
 }
 
-#pic_display {
+#post_pic {
+  height: 200px;
+  width: 200px;
+  border: 10px solid black;
   margin-top: 10px;
   margin-bottom: 10px;
 }
