@@ -8,6 +8,12 @@
   border: 10px solid black;
 }
 
+#post_pic {
+  height: 200px;
+  width: 200px;
+  border: 10px solid black;
+}
+
 .row {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -22,6 +28,11 @@
 }
 
 #pic_display {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#post_pic {
   margin-top: 10px;
   margin-bottom: 10px;
 }
