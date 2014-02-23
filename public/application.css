@@ -21,6 +21,9 @@
 .row.header {
   text-align: center;
 }
+.item_text {
+  float: left;
+}
 
 .row.header h3 {
   text-align: center;
@@ -30,11 +33,13 @@
 #pic_display {
   margin-top: 10px;
   margin-bottom: 10px;
+  float: left;
 }
 
 #post_pic {
   margin-top: 10px;
   margin-bottom: 10px;
+  float: left;
 }
 
 input {

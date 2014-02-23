@@ -9,7 +9,7 @@
 
   <div class="items">
   <div class="row item">
-    <div class="medium-9 columns">
+    <div class="medium-9 columns item_text">
       <p>Item Name: <%= @item %></p>
       <p>Serial Number: <%= @serial_number %></p>
       <p>Retail Price: <%=@price %></p>
@@ -51,12 +51,12 @@ $('.add').on('click', function (e) {
 });
 
 var $item_result = '<div class="row item">' +
-            '<div class="large-6 columns">' +
+            '<div class="large-9 columns" class="item_text">' +
                 '<p>Item Name:' + '<label id="post_name"></label>' + '</p>' +
                 '<p>Serial Number:' + '<label id="post_number"></label>' + '</p>' +
                 '<p>Retail Price:'+ '<label id="post_price"></label>' + '</p>' +
                   '</div>'+
-                  '<div class="large-6 columns" id="post_pic">'+
+                  '<div class="large-3 columns" id="post_pic">'+
                   '</div>'+
                   '</div>';
 
