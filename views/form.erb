@@ -66,7 +66,28 @@
       <dd>
     <a href="#panel3">Saved Items (click to view)</a>
     <div id="panel3" class="content">
-      <%= erb :_inventory %>
+<% if session[:submitted_items] %>
+<% @i = 0 %>
+  <% while (@i < session[:submitted_items].length) do %>
+  <div class="row item">
+    <div class="medium-9 columns item_text">
+      <p>Item Name: <%= session[:submitted_items][@i][0] %></p>
+      <p>Serial Number: <%= session[:submitted_items][@i][5] %></p>
+      <p>Retail Price: <%=session[:submitted_items][@i][6] %></p>
+    </div>
+    <div class="medium-3 columns" id="post_pic">
+      <!--<div id="pic_display"> -->
+        <img src="http://farm<%=session[:submitted_items][@i][4]%>.staticflickr.com/<%=session[:submitted_items][@i][3]%>/<%=session[:submitted_items][@i][1]%>_<%=session[:submitted_items][@i][2]%>_m.jpg" />
+      <!--</div> -->
+    </div>
+  </div><br clear="both" />
+  <% @i += 1 %>
+<% end %>
+<% end %>
+</div>
+
+
+
     </div>
  </dd>
 </dl>

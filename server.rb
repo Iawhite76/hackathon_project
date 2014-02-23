@@ -24,29 +24,10 @@ get '/form' do
   erb :form
 end
 
-# post '/form' do
-
-#   @@name ||= params[:name]
-#   @@user_name ||= params[:user_name]
-#   @@phone ||= params[:phone]
-#   @@email ||= params[:email]
-#   @@zip ||= params[:zip]
-#   @serial_number = params[:serial_number]
-#   @item = params[:item]
-#   @price = params[:price]
-#   @pic = params[:pic]
-#   if @pic
-#   PHOTO_PATH=params[:pic][:tempfile]
-#   @id = flickr.upload_photo PHOTO_PATH, :title => @item, :description => 'serial number: ' + @serial_number + 'retail price: ' + @price, :tags => @user_name
-#   end
-#   erb :form
-# end
-
-
 post '/form' do
   session[:user] ||=[]
   session[:submitted_items] ||= []
-
+  PHOTO_PATH=params[:pic][:tempfile]
   @name = params[:name]
   @user_name = params[:user_name]
   @phone = params[:phone]
@@ -62,20 +43,18 @@ post '/form' do
   @price = params[:price]
   @pic = params[:pic]
   if @pic
-  PHOTO_PATH=params[:pic][:tempfile]
-  @id = flickr.upload_photo PHOTO_PATH, :title => @item, :description => 'serial number: ' + @serial_number + 'retail price: ' + @price, :tags => @user_name
-  puts @id
+    @id = flickr.upload_photo PHOTO_PATH, :title => @item, :description => 'serial number: ' + @serial_number + 'retail price: ' + @price, :tags => @user_name
     @photo_detail = flickr.photos.getInfo :photo_id => @id
-  @pid = @photo_detail.id
-  @secret = @photo_detail.secret
-  @ps = @photo_detail.server
-  @farm = @photo_detail.farm
-
-  if @id
-    session[:submitted_items] << [@item, @pid, @secret, @ps, @farm, @serial_number, @price, @user_name]
+    @pid = @photo_detail.id
+    @secret = @photo_detail.secret
+    @ps = @photo_detail.server
+    @farm = @photo_detail.farm
   end
-  puts session[:submitted_items]
-end
+      if @farm
+        session[:submitted_items] << [@item, @pid, @secret, @ps, @farm, @serial_number, @price, @user_name]
+      end
+
+puts session[:submitted_items]
 
   erb :form
 end
