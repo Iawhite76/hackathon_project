@@ -86,7 +86,7 @@
 </div>
 
 
-<%= puts session[:submitted_items].count %>
+
 
   <script type="text/javascript">
 $('.remove').on('click', function (e) {
@@ -94,10 +94,7 @@ $('.remove').on('click', function (e) {
 
 
     $('.row .item:last').remove();
-    remove =
-    <% x = session[:submitted_items].length - 1 %>
-    <%= session[:submitted_items].delete(x) %>
-<%= puts session[:submitted_items].count %>
+
 });
 </script>
     </div>

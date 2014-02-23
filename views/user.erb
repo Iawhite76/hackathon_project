@@ -1,7 +1,7 @@
   <dd>
 
     <a href="#panel1">
-      <% if session[:user][0] %>
+      <% if session[:user] %>
       <img src="http://www.gravatar.com/avatar/<%= @digest %>" class="gravatar"/>
     <h4><%= session[:user][0] %> </h4>
     <%= session[:user][1] %> -- <%= session[:user][2] %> --  <%= session[:user][3] %>
