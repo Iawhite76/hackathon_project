@@ -5,7 +5,19 @@
 
     <dl class="accordion" data-accordion>
   <dd>
-    <a href="#panel1">User Information (click to enter)</a>
+
+     <script type="text/javascript">
+     <% if @name %>
+     $(document).ready(function() {
+     // Handler for .ready() called.
+     $('#panel1').removeClass('active');
+      $('#panel2').addClass('active');
+     });
+       <% end %>
+     </script>
+
+
+    <a href="#panel1"> <% if @name %> <%= @name %> <% else %> User Information (click to enter)  <% end %></a>
     <div id="panel1" class="content active">
       <form data-abide method="post" action="/_inventory">
         <div class="name-field">
@@ -32,6 +44,7 @@
         <input type="text" value="Serial number" id="serial_number" name="serial_number"></input><br>
         <input type="text" value="Approximate Value" id="price" name="price"></input><br>
         <input type="text" value="Item Description" id="description" name="description"></input><br>
+
         <div class="row">
           <div class="large-3 medium-3 columns large-centered medium-centered">
             <input type="file" value="Upload picture" id='pic' name="pic"></input>
