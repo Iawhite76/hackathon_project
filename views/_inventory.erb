@@ -1,25 +1,17 @@
 
-<body>
-
-  <div class="row header">
-
-      <h1>Summary of Inventory</h1>
-      <h3>Total Value: </h3>
-  </div>
-
-  <div class="items">
+<div class="items">
   <div class="row item">
     <div class="medium-9 columns item_text">
       <p>Item Name: <%= @item %></p>
       <p>Serial Number: <%= @serial_number %></p>
       <p>Retail Price: <%=@price %></p>
     </div>
-    <div class="medium-3 columns">
-      <div id="pic_display">
+    <div class="medium-3 columns" id="post_pic">
+      <!--<div id="pic_display"> -->
         <img src="http://farm<%=@farm%>.staticflickr.com/<%=@ps%>/<%=@pid%>_<%=@secret%>_m.jpg" />
-      </div>
+      <!--</div> -->
     </div>
-  </div>
+  </div><br clear="both" />
 
 </div>
   <div class="row add_div">
@@ -41,27 +33,42 @@ $('.remove').on('click', function (e) {
 });
 
 
-
-$('.add').on('click', function (e) {
+  $('.add').on('click', function (e) {
   e.preventDefault();
-  $('.items').append(''+$item_result+'');
-  $('#post_name').text(''+$("#item_name").val()+'');
-  $('#post_number').text(''+$("#serial").val()+'');
-  $('#post_price').text(''+$("#price2").val()+'');
-  $('#post_pic').append('<img src="'+$("#pic_input").val()+'"/>');
-});
 
-var $item_result = '<div class="row item">' +
+  var item_name = $("#item_name").val();
+  console.log(item_name);
+  var serial_number = $("#serial").val();
+   console.log(serial_number);
+  var price = $("#price2").val();
+   console.log(price);
+  var pic_image = $("#pic_input").val();
+   console.log(pic_image);
+
+
+   var item_result = '<div class="row item">' +
                   '<div class="medium-9 columns" class="item_text">' +
-                '<p>Item Name:' + '<label id="post_name"></label>' + '</p>' +
-                '<p>Serial Number:' + '<label id="post_number"></label>' + '</p>' +
-                '<p>Retail Price:'+ '<label id="post_price"></label>' + '</p>' +
+                '<p>Item Name:' + '<label id="post_name">' + item_name + '</label>' + '</p>' +
+                '<p>Serial Number:' + '<label id="post_number">' + serial_number + '</label>' + '</p>' +
+                '<p>Retail Price:'+ '<label id="post_price">' + price + '</label>' + '</p>' +
                   '</div>'+
-                  '<div class="medium-3 columns" id="post_pic">'+
+                  '<div class="medium-3 columns" id="post_pic"><img src="' + pic_image + '" />' +
                   '</div>'+
-                  '</div>'
+                  '</div><br clear="both" />'
                   ;
 
+  $('.items').append(item_result);
+  console.log(item_result)
+});
+
+
+
+
+
   </script>
+
+
+    </div>
+
 
 

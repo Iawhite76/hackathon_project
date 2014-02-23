@@ -7,17 +7,25 @@
   <dd>
 
      <script type="text/javascript">
-     <% if @name %>
+     <% if session["name"] %>
      $(document).ready(function() {
      // Handler for .ready() called.
      $('#panel1').removeClass('active');
       $('#panel2').addClass('active');
      });
        <% end %>
+         <% if @item %>
+     $(document).ready(function() {
+     // Handler for .ready() called.
+     $('#panel2').removeClass('active');
+      $('#panel3').addClass('active');
+     });
+       <% end %>
      </script>
 
 
-    <a href="#panel1"> <% if @name %> <%= @name %> | <%= @user_name %> | <%= @zip %> <% else %> User Information (click to enter)  <% end %></a>
+    <a href="#panel1"> <% if session["name"] %> <%= session["name"] %> | <%= user_name %> | <%= zip %>
+      <% else %> User Information (click to enter)  <% end %></a>
     <div id="panel1" class="content active">
       <form data-abide method="post" action="/form">
         <div class="name-field">
@@ -40,7 +48,7 @@
   <dd>
     <a href="#panel2">Item Information (click to enter)</a>
     <div id="panel2" class="content">
-       <form method="post" action="/_inventory" enctype="multipart/form-data">
+       <form method="post" action="/form" enctype="multipart/form-data">
         <input type="text" value="Item name" id="item" name="item"></input><br>
         <input type="text" value="Serial number" id="serial_number" name="serial_number"></input><br>
         <input type="text" value="Approximate Value" id="price" name="price"></input><br>
@@ -55,13 +63,14 @@
       </form>
     </div>
   </dd>
-    <dd>
+      <dd>
     <a href="#panel3">Saved Items (click to view)</a>
     <div id="panel3" class="content">
       <%= erb :_inventory %>
     </div>
  </dd>
 </dl>
+
 
 
 
