@@ -15,21 +15,7 @@ flickr.access_secret = ENV['A_SECRET']
 enable :sessions
 
 get '/form' do
-  # @name ||= params[:name]
-  # @user_name ||= params[:user_name]
-  # @phone ||= params[:phone]
-  # @email ||= params[:email]
-  # @zip ||= params[:zip]
-  # if @id
-  # @photo_detail = flickr.photos.getInfo :photo_id => @id
-  # end
-  erb :form
-end
-
-post '/form' do
-  session[:user] = nil
-  session[:submitted_items] ||= []
-
+    session[:user] = nil
   @name = params[:name]
   @user_name = params[:user_name]
   @phone = params[:phone]
@@ -40,8 +26,16 @@ post '/form' do
   if @name
   session[:user] = [@user_name, @name, @email, @phone, @zip]
   end
- @saved_email = session[:user][2]
+ @saved_email = params[:email]
   @digest = Digest::MD5.hexdigest(@saved_email)
+  erb :form
+end
+
+post '/form' do
+
+  session[:submitted_items] ||= []
+
+
   @item = params[:item]
   @serial_number = params[:serial_number]
   @price = params[:price]
