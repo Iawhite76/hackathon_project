@@ -10,12 +10,21 @@
   margin-bottom: 10px;
 }
 
+#post_pic {
+  height: 200px;
+  width: 200px;
+  border: 10px solid black;
+}
+
 .row {
   margin-top: 10px;
   margin-bottom: 10px;
 }
 .row.header {
   text-align: center;
+}
+.item_text {
+  float: left;
 }
 
 .row.header h3 {
@@ -29,6 +38,13 @@
   border: 10px solid black;
   margin-top: 10px;
   margin-bottom: 10px;
+  float: left;
+}
+
+#post_pic {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  float: left;
 }
 
 input {
