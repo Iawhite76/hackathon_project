@@ -17,9 +17,9 @@
      </script>
 
 
-    <a href="#panel1"> <% if @name %> <%= @name %> <% else %> User Information (click to enter)  <% end %></a>
+    <a href="#panel1"> <% if @name %> <%= @name %> | <%= @user_name %> | <%= @zip %> <% else %> User Information (click to enter)  <% end %></a>
     <div id="panel1" class="content active">
-      <form data-abide method="post" action="/_inventory">
+      <form data-abide method="post" action="/form">
         <div class="name-field">
           <input type="text" value="Your Name" id="name" name="name" required pattern="[^Your Name]+">
           <small class="error">Name is required and must be a string.</small>
@@ -33,6 +33,7 @@
         </div>
         <br>
         <input type="text" value="Zip code" id="zip" name="zip"></input><br>
+        <button type="submit" id="submit">Submit</button>
       </form>
     </div>
   </dd>
