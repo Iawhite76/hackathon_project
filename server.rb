@@ -4,7 +4,7 @@ require 'pry'
 require 'flickraw'
 require 'json'
 require 'digest/md5'
-require_relative 'lib/inventory.rb'
+
 #set :bind, '0.0.0.0' # Vagrant fix
 
 FlickRaw.api_key = ENV['API_KEY']
