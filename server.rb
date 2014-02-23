@@ -2,7 +2,6 @@ require 'rubygems'
 require 'sinatra'
 require 'pry'
 require 'flickraw'
-require_relative 'lib/base58.rb'
 #set :bind, '0.0.0.0' # Vagrant fix
 
 FlickRaw.api_key = ENV['API_KEY']

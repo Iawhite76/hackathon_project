@@ -20,8 +20,6 @@
       <p>Item Name: <%= @item %></p>
       <p>Serial Number: <%= @serial_number %></p>
       <p>Retail Price: <%=@price %></p>
-      <input type="button" value="Remove Item" class="remove"></input>
-      <input type="button" value="Submit Item" class="submit" id="submit_item"></input>
     </div>
     <div class="large-6 columns">
       <div id="pic_display">
@@ -31,49 +29,44 @@
   </div>
 
 </div>
-  <div>
-    <input type="button" value="Add New Item" id="add"></input>
+  <div class="row add_div">
+    <div class="large-6 columns">
+      <p>Item Name:<input type="text" name="item" id="item_name"></input></p>
+      <p>Serial Number: <input type="text" name="serial_number" id="serial"></input></p>
+      <p>Retail Price: <input type="text" name="price" id="price"></input></p>
+      <p>Upload photo: <input type="text" name="pic" id="pic_input"></input>
+      <input type="button" value="Add New Item" class="add"></input>
+      <input type="button" value="Remove Last Item" class="remove"></input>
+    </div>
   </div>
 
   <script type="text/javascript">
 $('.remove').on('click', function (e) {
     e.preventDefault();
-    $('.row.item').remove();
+    $('.row.item:last').remove();
 });
-var $item_div = '<div class="row item">' +
-            '<div class="large-6 columns">' +
-                '<p>Item Name: <input type="text" name="item"></input></p>' +
-                '<p>Serial Number: <input type="text" name="serial_number"></input></p>' +
-                '<p>Retail Price: <input type="text" name="price"></input></p>' +
-                'Upload photo: <input type="text" name="pic"></input>'+
-                  '</div>'+
-                  '<div class="large-6 columns">'+
-                  '<img src="" />'+
-                  '</div>'+
-                  '</div>';
+
+
+
+$('.add').on('click', function (e) {
+  e.preventDefault();
+  $('.items').append(''+$item_result+'');
+  $('#post_name').text(''+$("#item_name").val()+'');
+  $('#post_number').text(''+$("#serial").val()+'');
+  $('#post_price').text(''+$("#price").val()+'');
+  $('#post_pic').append('<img src="'+$("#pic_input").val()+'"/>');
+});
+
 var $item_result = '<div class="row item">' +
             '<div class="large-6 columns">' +
-                '<p>Item Name: <input type="text" name="item"></input></p>' +
-                '<p>Serial Number: <input type="text" name="serial_number"></input></p>' +
-                '<p>Retail Price: <input type="text" name="price"></input></p>' +
-                'Upload photo: <input type="text" name="pic"></input>'+
-                  '<input type="button" value="Remove Item" id="remove"></input>'+
-                  '<input type="button" value="Submit Item" class="submit" id="submit_item"></input>'+
+                '<p>Item Name:' + '<label id="post_name"></label>' + '</p>' +
+                '<p>Serial Number:' + '<label id="post_number"></label>' + '</p>' +
+                '<p>Retail Price:'+ '<label id="post_price"></label>' + '</p>' +
                   '</div>'+
-                  '<div class="large-6 columns">'+
-                  '<img src="" />'+
+                  '<div class="large-6 columns" id="post_pic">'+
                   '</div>'+
                   '</div>';
-$('#add').on('click', function (e) {
-  e.preventDefault();
-  $('.items')
-    .append(''+$item_div+'');
-});
-$('#submit_item').on('click', function (e)  {
-  $('.items')
-    .remove(''+$item_div+'')
-    .append('Test');
-});
+
   </script>
 
 
