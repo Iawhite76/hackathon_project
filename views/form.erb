@@ -1,10 +1,4 @@
-<html>
-<head>
-  <meta charset="UTF-8" />
-        <title>Insure My Stuff</title>
-        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/foundation/5.1.1/css/foundation.min.css">
-        <link rel="stylesheet" href="/application.css" type="text/css" />
-</head>
+
   <body>
     <h1 class="header">Insure My Stuff</h1>
     <p class="header">Upload your belongings</p>
@@ -13,7 +7,7 @@
   <dd>
     <a href="#panel1">User Information (click to enter)</a>
     <div id="panel1" class="content active">
-      <form data-abide method="post" action="/inventory">
+      <form data-abide method="post" action="/_inventory">
         <div class="name-field">
           <input type="text" value="Your Name" id="name" name="name" required pattern="[^Your Name]+">
           <small class="error">Name is required and must be a string.</small>
@@ -33,7 +27,7 @@
   <dd>
     <a href="#panel2">Item Information (click to enter)</a>
     <div id="panel2" class="content">
-       <form method="post" action="/inventory" enctype="multipart/form-data">
+       <form method="post" action="/_inventory" enctype="multipart/form-data">
         <input type="text" value="Item name" id="item" name="item"></input><br>
         <input type="text" value="Serial number" id="serial_number" name="serial_number"></input><br>
         <input type="text" value="Approximate Value" id="price" name="price"></input><br>
@@ -50,15 +44,11 @@
     <dd>
     <a href="#panel3">Saved Items (click to view)</a>
     <div id="panel3" class="content">
-      <% if @id %>
-      <%= @id %>
-      <%= @photo_detail %>
-      <% end %>
-
+      <%= erb :_inventory %>
+    </div>
  </dd>
 </dl>
-</body>
-</html>
+
 
 
 

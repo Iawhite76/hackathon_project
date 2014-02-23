@@ -44,15 +44,15 @@ post '/form' do
   erb :form
 end
 
-get '/inventory' do
+get '/_inventory' do
 #temporary just to show rendered inventory page
 
   @user_photos = flickr.photos.search :user_id => '118312704@N05', :tags => 'zalary'
   puts @user_photos
-  erb :inventory
+  erb :_inventory
 end
 
-post '/inventory' do
+post '/_inventory' do
   PHOTO_PATH=params[:pic][:tempfile]
   @name = params[:name]
   @user_name = params[:user_name]
@@ -82,7 +82,7 @@ post '/inventory' do
   @secret = @photo_detail.secret
   @ps = @photo_detail.server
   @farm = @photo_detail.farm
-  erb :inventory
+  erb :form
 end
 
 
