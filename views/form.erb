@@ -3,10 +3,7 @@
     <h1 class="header">Insure My Stuff</h1>
     <p class="header">Upload your belongings</p>
 
-    <dl class="accordion" data-accordion>
-  <dd>
-
-     <script type="text/javascript">
+       <script type="text/javascript">
      <% if session[:user] %>
      $(document).ready(function() {
      // Handler for .ready() called.
@@ -23,28 +20,9 @@
        <% end %>
      </script>
 
+    <dl class="accordion" data-accordion>
 
-    <a href="#panel1"> <% if @name %> <%= @name %> | <%= @user_name %> | <%= @zip %>
-      <% else %> User Information (click to enter)  <% end %></a>
-    <div id="panel1" class="content active">
-      <form data-abide method="post" action="/form">
-        <div class="name-field">
-          <input type="text" value="Your Name" id="name" name="name" required pattern="[^Your Name]+">
-          <small class="error">Name is required and must be a string.</small>
-        </div>
-        <br>
-          <input type="text" value="User name" id="user_name" name="user_name"></input><br>
-          <input type="text" value="Phone number" id="phone" name="phone"></input><br>
-        <div class="email-field">
-          <input type="email" value="Enter Email" id="email" name="email" required>
-          <small class="error">An email address is required.</small>
-        </div>
-        <br>
-        <input type="text" value="Zip code" id="zip" name="zip"></input><br>
-        <button type="submit" id="submit">Submit</button>
-      </form>
-    </div>
-  </dd>
+   <%= erb :user %>
   <dd>
     <a href="#panel2">Item Information (click to enter)</a>
     <div id="panel2" class="content">
@@ -70,14 +48,17 @@
 
       <h1>Summary of Inventory</h1>
       <h3>Total Value: $
-<% something = session[:submitted_items][0][6] %>
-<% if something %>
+
+
+  <% if session[:submitted_items] %>
+<% if session[:submitted_items][0][6] %>
 
 <% @t = 0 %>
   <% while (@t < session[:submitted_items].length) do %>
    <% s = session[:submitted_items][@t][6].to_f %>
   <% @total += s %>
   <% @t += 1 %>
+<% end %>
 <% end %>
 <% end %>
 <%= @total %>
@@ -105,12 +86,18 @@
 </div>
 
 
+<%= puts session[:submitted_items].count %>
 
   <script type="text/javascript">
 $('.remove').on('click', function (e) {
     e.preventDefault();
-    $('.row .item:last').remove();
 
+
+    $('.row .item:last').remove();
+    remove =
+    <% x = session[:submitted_items].length - 1 %>
+    <%= session[:submitted_items].delete(x) %>
+<%= puts session[:submitted_items].count %>
 });
 </script>
     </div>

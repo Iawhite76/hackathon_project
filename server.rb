@@ -3,6 +3,8 @@ require 'sinatra'
 require 'pry'
 require 'flickraw'
 require 'json'
+require 'digest/md5'
+require_relative 'lib/inventory.rb'
 #set :bind, '0.0.0.0' # Vagrant fix
 
 FlickRaw.api_key = ENV['API_KEY']
@@ -25,24 +27,27 @@ get '/form' do
 end
 
 post '/form' do
-  session[:user] ||=[]
+  session[:user] = nil
   session[:submitted_items] ||= []
-  PHOTO_PATH=params[:pic][:tempfile]
+
   @name = params[:name]
   @user_name = params[:user_name]
   @phone = params[:phone]
   @email = params[:email]
+
   @zip = params[:zip]
   @total = 0
-  if @user
-  session[:user] << [@user_name, @name, @email, @phone, @zip]
+  if @name
+  session[:user] = [@user_name, @name, @email, @phone, @zip]
   end
-
+ @saved_email = session[:user][2]
+  @digest = Digest::MD5.hexdigest(@saved_email)
   @item = params[:item]
   @serial_number = params[:serial_number]
   @price = params[:price]
   @pic = params[:pic]
   if @pic
+  PHOTO_PATH=params[:pic][:tempfile]
     @id = flickr.upload_photo PHOTO_PATH, :title => @item, :description => 'serial number: ' + @serial_number + 'retail price: ' + @price, :tags => @user_name
     @photo_detail = flickr.photos.getInfo :photo_id => @id
     @pid = @photo_detail.id
@@ -53,8 +58,7 @@ post '/form' do
       if @farm
         session[:submitted_items] << [@item, @pid, @secret, @ps, @farm, @serial_number, @price, @user_name]
       end
-
-puts session[:submitted_items]
+  puts @digest
 
   erb :form
 end

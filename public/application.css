@@ -49,3 +49,7 @@
 input {
   text-align: center;
 }
+
+img.gravatar {
+  float: left; margin-right: 10px;
+}
