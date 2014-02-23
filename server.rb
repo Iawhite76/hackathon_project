@@ -33,7 +33,7 @@ post '/form' do
   @phone = params[:phone]
   @email = params[:email]
   @zip = params[:zip]
-
+  @total = 0
   if @user
   session[:user] << [@user_name, @name, @email, @phone, @zip]
   end
@@ -72,41 +72,4 @@ get '/_inventory' do
   erb :_inventory
 end
 
-get '/detail' do
-  @user_photos = flickr.photos.search :user_id => '118312704@N05', :tags => 'zalary'
 
-  puts @user_photos.class
-
-  photos = @user_photos.to_a
-  puts photos.count
-  puts photos = @user_photos.to_a
-
-  # photos.each_with_index { |x, index| index }
-  puts photos[0]["id"]
-  puts photos[1]["id"]
-  photos[0]["id"]
-  photos[1]["id"]
-#pry.binding
-  #y = photos.count
-   #y = y.to_i
- # puts ("count" + y)
-  # for i in 0..y - 1
-  #   puts photos[i]["id"]
-  # end
-
-  for i in 0..photos.count - 1
-    puts y = photos[i]["id"]
-    #puts y.to_s
-  end
-  # string = photos.to_s
-  # split = string.split("},{")
-  # #json = JSON.parse(split)
-  # puts split
-  # puts split[0]
-  # # array = [string]
-  # # puts array
-  # # array.each {|x,y| puts x }
- #binding.pry
-
-
-end

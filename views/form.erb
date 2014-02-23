@@ -66,6 +66,24 @@
       <dd>
     <a href="#panel3">Saved Items (click to view)</a>
     <div id="panel3" class="content">
+        <div class="row header">
+
+      <h1>Summary of Inventory</h1>
+      <h3>Total Value: $
+<% something = session[:submitted_items][0][6] %>
+<% if something %>
+
+<% @t = 0 %>
+  <% while (@t < session[:submitted_items].length) do %>
+   <% s = session[:submitted_items][@t][6].to_f %>
+  <% @total += s %>
+  <% @t += 1 %>
+<% end %>
+<% end %>
+<%= @total %>
+      </h3>
+  </div>
+        <center><input type="button" value="Remove Last Item" class="remove"></input></center>
 <% if session[:submitted_items] %>
 <% @i = 0 %>
   <% while (@i < session[:submitted_items].length) do %>
@@ -88,6 +106,13 @@
 
 
 
+  <script type="text/javascript">
+$('.remove').on('click', function (e) {
+    e.preventDefault();
+    $('.row .item:last').remove();
+
+});
+</script>
     </div>
  </dd>
 </dl>
