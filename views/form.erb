@@ -7,7 +7,7 @@
   <dd>
 
      <script type="text/javascript">
-     <% if session["name"] %>
+     <% if session[:user] %>
      $(document).ready(function() {
      // Handler for .ready() called.
      $('#panel1').removeClass('active');
@@ -24,7 +24,7 @@
      </script>
 
 
-    <a href="#panel1"> <% if session["name"] %> <%= session["name"] %> | <%= user_name %> | <%= zip %>
+    <a href="#panel1"> <% if @name %> <%= @name %> | <%= @user_name %> | <%= @zip %>
       <% else %> User Information (click to enter)  <% end %></a>
     <div id="panel1" class="content active">
       <form data-abide method="post" action="/form">
