@@ -32,7 +32,7 @@
   border: 10px solid black;
   margin-top: 10px;
   margin-bottom: 10px;
-  float: left;
+  /* float: left; */
 }
 #post_pic img {
   height: 200px;
@@ -41,9 +41,7 @@
   margin-bottom: 10px;
 }
 
-.row {
-  min-height: 400px;
-}
+
 
 .item_text {
   width: 60%;
