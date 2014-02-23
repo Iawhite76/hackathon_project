@@ -3,7 +3,53 @@
 }
 
 #pic_display {
-  background-size: 200px 200px;
-  background-color: blue;
+  height: 200px;
+  width: 200px;
   border: 10px solid black;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.row {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.row.header {
+  text-align: center;
+}
+.item_text {
+  float: left;
+}
+
+.row.header h3 {
+  text-align: center;
+  color: green;
+}
+
+#post_pic {
+
+  border: 10px solid black;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  /* height: 200px;
+  width: 25%;
+  float: left; */
+}
+#post_pic img {
+  width: 200px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.item_text {
+  width: 60%;
+  float: left;
+}
+
+input {
+  text-align: center;
+}
+
+img.gravatar {
+  float: left; margin-right: 10px;
 }

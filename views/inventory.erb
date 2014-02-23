@@ -3,32 +3,74 @@
   <title>Summary of Inventory</title>
   <meta charset="UTF-8" />
   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/foundation/5.1.1/css/foundation.min.css">
-  <link rel="stylesheet" href="/application.css" type="text/css" />
+  <link rel="stylesheet" href="/js/application.css" type="text/css" />
+
 </head>
-<body></a>
-  <h1>Summary of Inventory for <%= @user_name %></h1>
-  <div class="row">
-    <p>Name: <%= @name %></p>
-    <p>Phone: <%= @phone %></p>
-    <p>Email: <%= @email %></p>
-    <p>Zip: <%= @zip %></p>
+<body>
+
+  <div class="row header">
+
+      <h1>Summary of Inventory</h1>
+      <h3>Total Value: </h3>
   </div>
-<% i = 0 %>
-  <% while i < @items.length %>
-  <div class="row">
+
+  <div class="items">
+  <div class="row item">
     <div class="large-6 columns">
-      <p>Item Name: <%= @items[i] %></p>
-      <p>Serial Number: <%= @serial_numbers[i] %></p>
-      <p>Retail Price: <%= @prices[i] %></p>
+      <p>Item Name: <%= @item %></p>
+      <p>Serial Number: <%= @serial_number %></p>
+      <p>Retail Price: <%=@price %></p>
     </div>
     <div class="large-6 columns">
       <div id="pic_display">
-        <img src="<%=@pics[i] %>" />
-    </div>
+        <img src="http://farm<%=@farm%>.staticflickr.com/<%=@ps%>/<%=@pid%>_<%=@secret%>_m.jpg" />
+      </div>
     </div>
   </div>
-    <%= i += 1 %>
-  <% end %>
+
+</div>
+  <div class="row add_div">
+    <div class="large-6 columns">
+      <p>Item Name:<input type="text" name="item" id="item_name"></input></p>
+      <p>Serial Number: <input type="text" name="serial_number" id="serial"></input></p>
+      <p>Retail Price: <input type="text" name="price" id="price"></input></p>
+      <p>Upload photo: <input type="text" name="pic" id="pic_input"></input>
+      <input type="button" value="Add New Item" class="add"></input>
+      <input type="button" value="Remove Last Item" class="remove"></input>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+$('.remove').on('click', function (e) {
+    e.preventDefault();
+    $('.row.item:last').remove();
+});
+
+
+
+$('.add').on('click', function (e) {
+  e.preventDefault();
+  $('.items').append(''+$item_result+'');
+  $('#post_name').text(''+$("#item_name").val()+'');
+  $('#post_number').text(''+$("#serial").val()+'');
+  $('#post_price').text(''+$("#price").val()+'');
+  $('#pic_display p').append('<img src="'+$("#pic_input").val()+'"/>');
+});
+
+var $item_result = '<div class="row item">' +
+            '<div class="large-6 columns">' +
+                '<p>Item Name:' + '<label id="post_name"></label>' + '</p>' +
+                '<p>Serial Number:' + '<label id="post_number"></label>' + '</p>' +
+                '<p>Retail Price:'+ '<label id="post_price"></label>' + '</p>' +
+                  '</div>'+
+                  '<div class="large-6 columns">'+
+                  '<div id="pic_display">' +
+                  '<p></p>'
+                  '</div>'+
+                  '</div>'+
+                  '</div>';
+
+  </script>
 
 
 </body>

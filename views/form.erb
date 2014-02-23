@@ -1,45 +1,110 @@
-<html>
-<head>
-  <meta charset="UTF-8" />
-        <title>Insure My Stuff</title>
-        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/foundation/5.1.1/css/foundation.min.css">
-        <link rel="stylesheet" href="/application.css" type="text/css" />
-</head>
+
   <body>
-    <h1 class="header">Insure My Stuff</h1>
+    <h1 class="header">Store My Stuff</h1>
     <p class="header">Upload your belongings</p>
 
-<form method="post" action="/inventory">
-    <input type="text" value="Name" id="name" name="name"></input><br>
-    <input type="text" value="User name" id="user_name" name="user_name"></input><br>
-    <input type="text" value="Phone number" id="phone" name="phone"></input><br>
-    <input type="email" value="Email address" id="email" name="email"></input><br>
-    <input type="text" value="Zip code" id="zip" name="zip"></input><br>
-  <div class="row">
-    <div class="large-4 columns">
-      <input type="text" value="Item 1 name" id="item" name="item"></input><br>
-      <input type="text" value="Serial number" id="serial_number" name="serial_number"></input><br>
-      <input type="text" value="Retail price" id="price" name="price"></input><br>
-      <input type="text" value="Upload picture" id="pic" name="pic"></input><br>
+       <script type="text/javascript">
+     <% if session[:user] %>
+     $(document).ready(function() {
+     // Handler for .ready() called.
+     $('#panel1').removeClass('active');
+      $('#panel2').addClass('active');
+     });
+       <% end %>
+         <% if @item %>
+     $(document).ready(function() {
+     // Handler for .ready() called.
+     $('#panel2').removeClass('active');
+      $('#panel3').addClass('active');
+     });
+       <% end %>
+     </script>
+
+    <dl class="accordion" data-accordion>
+
+   <%= erb :user %>
+  <dd>
+    <a href="#panel2">Item Information (click to enter)</a>
+    <div id="panel2" class="content">
+       <form method="post" action="/form" enctype="multipart/form-data">
+        <input type="text" value="Item name" id="item" name="item"></input><br>
+        <input type="text" value="Serial number" id="serial_number" name="serial_number"></input><br>
+        <input type="text" value="Approximate Value" id="price" name="price"></input><br>
+        <input type="text" value="Item Description" id="description" name="description"></input><br>
+
+        <div class="row">
+          <div class="large-3 medium-3 columns large-centered medium-centered">
+            <input type="file" value="Upload picture" id='pic' name="pic"></input>
+            <button type="submit" id="submit">Submit</button>
+          </div>
+        </div>
+      </form>
     </div>
-    <div class="large-4 columns">
-      <input type="text" value="Item 2 name" id="item" name="item2"></input><br>
-      <input type="text" value="Serial number" id="serial_number" name="serial_number2"></input><br>
-      <input type="text" value="Retail price" id="price" name="price2"></input><br>
-      <input type="text" value="Upload picture" id="pic" name="pic2"></input><br>
-    </div>
-    <div class="large-4 columns">
-      <input type="text" value="Item 3 name" id="item" name="item3"></input><br>
-      <input type="text" value="Serial number" id="serial_number" name="serial_number3"></input><br>
-      <input type="text" value="Retail price" id="price" name="price3"></input><br>
-      <input type="text" value="Upload picture" id="pic" name="pic3"></input><br>
-    </div>
+  </dd>
+      <dd>
+    <a href="#panel3">Saved Items (click to view)</a>
+    <div id="panel3" class="content">
+        <div class="row header">
+
+      <h1>Summary of Inventory</h1>
+      <h3>Total Value: $
+
+
+  <% if session[:submitted_items] %>
+<% if session[:submitted_items][0][6] %>
+
+<% @t = 0 %>
+  <% while (@t < session[:submitted_items].length) do %>
+   <% s = session[:submitted_items][@t][6].to_f %>
+  <% @total += s %>
+  <% @t += 1 %>
+<% end %>
+<% end %>
+<% end %>
+<%= @total %>
+      </h3>
   </div>
-    <input type="submit" value="Submit" id="submit"></input>
-</form>
+        <center><input type="button" value="Remove Last Item" class="remove"></input></center>
+<% if session[:submitted_items] %>
+<% @i = 0 %>
+  <% while (@i < session[:submitted_items].length) do %>
+  <div class="row item">
+    <div class="medium-9 columns item_text">
+      <p>Item Name: <%= session[:submitted_items][@i][0] %></p>
+      <p>Serial Number: <%= session[:submitted_items][@i][5] %></p>
+      <p>Retail Price: <%=session[:submitted_items][@i][6] %></p>
+    </div>
+    <div class="medium-3 columns" id="post_pic">
+      <!--<div id="pic_display"> -->
+        <img src="http://farm<%=session[:submitted_items][@i][4]%>.staticflickr.com/<%=session[:submitted_items][@i][3]%>/<%=session[:submitted_items][@i][1]%>_<%=session[:submitted_items][@i][2]%>_m.jpg" />
+      <!--</div> -->
+    </div>
+  </div><br clear="both" />
+  <% @i += 1 %>
+<% end %>
+<% end %>
+</div>
 
-    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.0.3/jquery-2.0.3.js"></script>
-    <script type="text/javascript" src="/application.js"></script>
 
-  </body>
-</html>
+
+
+  <script type="text/javascript">
+$('.remove').on('click', function (e) {
+    e.preventDefault();
+
+
+    $('.row .item:last').remove();
+
+});
+</script>
+    </div>
+ </dd>
+</dl>
+
+
+
+
+
+
+
+

@@ -1,0 +1,69 @@
+
+<div class="items">
+  <div class="row item">
+    <div class="medium-9 columns item_text">
+      <p>Item Name: <%= @item %></p>
+      <p>Serial Number: <%= @serial_number %></p>
+      <p>Retail Price: <%=@price %></p>
+    </div>
+    <div class="medium-3 columns" id="post_pic">
+      <!--<div id="pic_display"> -->
+        <img src="http://farm<%=@farm%>.staticflickr.com/<%=@ps%>/<%=@pid%>_<%=@secret%>_m.jpg" />
+      <!--</div> -->
+    </div>
+  </div><br clear="both" />
+
+</div>
+  <div class="row add_div">
+    <div class="medium-6 columns">
+      <p>Item Name:<input type="text" name="item" id="item_name"></input></p>
+      <p>Serial Number: <input type="text" name="serial_number" id="serial"></input></p>
+      <p>Retail Price: <input type="text" name="price" id="price2"></input></p>
+      <p>Upload photo: <input type="text" name="pic" id="pic_input"></input>
+      <input type="button" value="Add New Item" class="add"></input>
+      <input type="button" value="Remove Last Item" class="remove"></input>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+$('.remove').on('click', function (e) {
+    e.preventDefault();
+    $('.row.item:last').remove();
+
+});
+
+
+  $('.add').on('click', function (e) {
+  e.preventDefault();
+
+  var item_name = $("#item_name").val();
+  var serial_number = $("#serial").val();
+  var price = $("#price2").val();
+  var pic_image = $("#pic_input").val();
+
+   var item_result = '<div class="row item">' +
+                  '<div class="medium-9 columns" class="item_text">' +
+                '<p>Item Name:' + '<label id="post_name">' + item_name + '</label>' + '</p>' +
+                '<p>Serial Number:' + '<label id="post_number">' + serial_number + '</label>' + '</p>' +
+                '<p>Retail Price:'+ '<label id="post_price">' + price + '</label>' + '</p>' +
+                  '</div>'+
+                  '<div class="medium-3 columns" id="post_pic"><img src="' + pic_image + '" />' +
+                  '</div>'+
+                  '</div><br clear="both" />'
+                  ;
+
+  $('.items').append(item_result);
+  console.log(item_result)
+});
+
+
+
+
+
+  </script>
+
+
+    </div>
+
+
+

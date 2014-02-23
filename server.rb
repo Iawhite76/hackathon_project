@@ -1,39 +1,77 @@
 require 'rubygems'
 require 'sinatra'
 require 'pry'
+require 'flickraw'
+require 'json'
+require 'digest/md5'
 
-set :bind, '0.0.0.0' # Vagrant fix
+#set :bind, '0.0.0.0' # Vagrant fix
+
+FlickRaw.api_key = ENV['API_KEY']
+FlickRaw.shared_secret = ENV['SECRET']
+
+flickr.access_token = ENV['TOKEN']
+flickr.access_secret = ENV['A_SECRET']
+enable :sessions
 
 get '/form' do
-  erb :form
-end
 
-get '/form' do
-  erb :form
-end
-
-post '/inventory' do
+  session[:user] = nil
   @name = params[:name]
   @user_name = params[:user_name]
   @phone = params[:phone]
   @email = params[:email]
+
   @zip = params[:zip]
+
+  if @name
+  session[:user] = [@email, @user_name, @name, @phone, @zip]
+  @saved_email = session[:user][0]
+  @digest = Digest::MD5.hexdigest(@saved_email)
+  end
+
+  @total = 0
+  erb :form
+end
+
+post '/form' do
+
+  session[:submitted_items] ||= []
+
+  @total = 0
   @item = params[:item]
   @serial_number = params[:serial_number]
   @price = params[:price]
   @pic = params[:pic]
-  @item2 = params[:item2]
-  @serial_number2 = params[:serial_number2]
-  @price2 = params[:price2]
-  @pic2 = params[:pic2]
-  @item3 = params[:item3]
-  @serial_number3 = params[:serial_number3]
-  @price3 = params[:price3]
-  @pic3 = params[:pic3]
-  @items = [@item, @item2, @item3]
-  @serial_numbers = [@serial_number, @serial_number2, @serial_number3]
-  @prices = [@price, @price2, @price3]
-  @pics = [@pic, @pic2, @pic3]
-  erb :inventory
+  if @pic
+  PHOTO_PATH=params[:pic][:tempfile]
+    @id = flickr.upload_photo PHOTO_PATH, :title => @item, :description => 'serial number: ' + @serial_number + 'retail price: ' + @price, :tags => @user_name
+    @photo_detail = flickr.photos.getInfo :photo_id => @id
+    @pid = @photo_detail.id
+    @secret = @photo_detail.secret
+    @ps = @photo_detail.server
+    @farm = @photo_detail.farm
+  end
+      if @farm
+        session[:submitted_items] << [@item, @pid, @secret, @ps, @farm, @serial_number, @price, @user_name]
+      end
+  @saved_email = session[:user][0]
+  @digest = Digest::MD5.hexdigest(@saved_email)
+
+  erb :form
 end
+
+get '/_inventory' do
+#temporary just to show rendered inventory page
+
+  @user_photos = flickr.photos.search :user_id => '118312704@N05', :tags => @user_name
+  puts @user_photos
+  @name ||= params[:name]
+  @user_name ||= params[:user_name]
+  @phone ||= params[:phone]
+  @email ||= params[:email]
+  @zip ||= params[:zip]
+  erb :_inventory
+end
+
 

@@ -1,0 +1,29 @@
+  <dd>
+
+    <a href="#panel1">
+      <% if session[:user] %>
+      <img src="http://www.gravatar.com/avatar/<%= @digest %>" class="gravatar"/>
+    <h4><%= session[:user][2] %> </h4>
+    <%= session[:user][1] %> -- <%= session[:user][0] %> --  <%= session[:user][3] %>
+      <% else %> User Information (click to enter)  <% end %></a>
+
+
+    <div id="panel1" class="content active">
+      <form data-abide method="get" action="/form">
+        <div class="name-field">
+          <input type="text" value="Your Name" id="name" name="name" required pattern="[^Your Name]+">
+          <small class="error">Name is required and must be a string.</small>
+        </div>
+        <br>
+          <input type="text" value="User name" id="user_name" name="user_name" required></input><br>
+          <input type="text" value="Phone number" id="phone" name="phone" required></input><br>
+        <div class="email-field">
+          <input type="email" value="Enter Email" id="email" name="email" required>
+          <small class="error">An email address is required.</small>
+        </div>
+        <br>
+        <input type="text" value="Zip code" id="zip" name="zip" required></input><br>
+        <button type="submit" id="submit">Submit</button>
+      </form>
+    </div>
+  </dd>
