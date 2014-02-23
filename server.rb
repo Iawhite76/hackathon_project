@@ -49,7 +49,7 @@ get '/inventory' do
 
   @user_photos = flickr.photos.search :user_id => '118312704@N05', :tags => 'zalary'
   puts @user_photos
-  erb :inventory
+  erb :_inventory
 end
 
 post '/inventory' do
@@ -82,7 +82,7 @@ post '/inventory' do
   @secret = @photo_detail.secret
   @ps = @photo_detail.server
   @farm = @photo_detail.farm
-  erb :inventory
+  erb :form
 end
 
 
