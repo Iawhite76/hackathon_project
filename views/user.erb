@@ -3,8 +3,8 @@
     <a href="#panel1">
       <% if session[:user] %>
       <img src="http://www.gravatar.com/avatar/<%= @digest %>" class="gravatar"/>
-    <h4><%= session[:user][0] %> </h4>
-    <%= session[:user][1] %> -- <%= session[:user][2] %> --  <%= session[:user][3] %>
+    <h4><%= session[:user][2] %> </h4>
+    <%= session[:user][1] %> -- <%= session[:user][0] %> --  <%= session[:user][3] %>
       <% else %> User Information (click to enter)  <% end %></a>
 
 
