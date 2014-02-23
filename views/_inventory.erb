@@ -29,7 +29,7 @@
 $('.remove').on('click', function (e) {
     e.preventDefault();
     $('.row.item:last').remove();
-    $('.row.item:last img').remove();
+
 });
 
 
@@ -37,14 +37,9 @@ $('.remove').on('click', function (e) {
   e.preventDefault();
 
   var item_name = $("#item_name").val();
-  console.log(item_name);
   var serial_number = $("#serial").val();
-   console.log(serial_number);
   var price = $("#price2").val();
-   console.log(price);
   var pic_image = $("#pic_input").val();
-   console.log(pic_image);
-
 
    var item_result = '<div class="row item">' +
                   '<div class="medium-9 columns" class="item_text">' +
